@@ -133,7 +133,7 @@
     });
 
 
-    axios.get('/shoppingcart/average')
+    axios.get('/shoppingcart/average?name=' + custName)
     .then(function (response) {
        avgMsg.innerHTML = response.data.toFixed(2);
     })

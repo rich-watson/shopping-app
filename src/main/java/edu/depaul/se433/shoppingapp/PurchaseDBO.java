@@ -56,7 +56,7 @@ public class PurchaseDBO {
             );
   }
   
-  public List<Purchase> getPurchases() {
+  public List<Purchase> getPurchases(String user) {
     List<Purchase> purchases = jdbi.withHandle(handle -> {
       return handle.createQuery("SELECT * FROM purchases ORDER BY id_num")
           .mapToBean(Purchase.class)

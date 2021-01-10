@@ -71,8 +71,8 @@ public class ShoppingCartApi {
   }
 
   @GetMapping(path = "/average")
-  public double getAvergaPurchase() {
-    return purchaseAgent.averagePurchase();
+  public double getAvergaPurchase(@RequestParam(value="name") String name) {
+    return purchaseAgent.averagePurchase(name);
   }
 
   @Bean

@@ -27,21 +27,25 @@ public class PurchaseAgent {
     dbo.savePurchase(purchase);
   }
 
-  public List<Purchase> getPurchases() {
+  public List<Purchase> getPurchases(String name) {
     try {
-      return dbo.getPurchases();
+      return dbo.getPurchases(name);
     } catch (JdbiException e) {
       return new ArrayList<>();
     }
   }
 
-  public double averagePurchase() {
-    List<Purchase> purchases = dbo.getPurchases();
-    OptionalDouble avg = purchases.stream()
-        .mapToDouble(purchase -> purchase.getCost())
-        .average();
-    if (avg.isPresent()) {
-      return avg.getAsDouble();
+  public double averagePurchase(String user) {
+    List<Purchase> purchases = dbo.getPurchases(user);
+    short cnt = 0;
+    double total = 0.0;
+    for (short i = 0; i < purchases.size(); i++) {
+      Purchase p = purchases.get(i);
+      cnt++;
+      total += p.getCost();
+    }
+    if (cnt > 0) {
+      return total / cnt;
     } else {
       return 0.0;
     }
