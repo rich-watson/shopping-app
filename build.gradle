@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id "io.freefair.lombok" version "5.1.0"
     id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id "pmd"
 }
 
 repositories {
@@ -28,7 +29,7 @@ description = 'shopping-app'
 java {
     sourceCompatibility = JavaVersion.VERSION_11
 }
-def user = 'dwalke30'
+def user = 'rwatso16'
 
 bootJar {
     mainClassName = 'edu.depaul.se433.shoppingapp.ShoppingAppApplication'
@@ -53,6 +54,7 @@ task packageDistribution(type: Zip) {
         include "gradlew"
         include "gradlew.bat"
         include "settings.gradle"
+        include "build/reports/pmd"
     }
 
     into("${user}-${rootProject.name}")
@@ -60,6 +62,18 @@ task packageDistribution(type: Zip) {
 
 check {
     finalizedBy packageDistribution
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    rulePriority = 3
+    ignoreFailures = true
+    ruleSets = [
+            "category/java/errorprone.xml",
+            "category/java/bestpractices.xml",
+            "category/java/performance.xml"
+    ]
 }
 
 
