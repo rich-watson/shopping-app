@@ -1,0 +1,6 @@
+﻿initialCost,state,shipping
+25,"IL",ShippingType.STANDARD
+100,"FL",ShippingType.NEXT_DAY
+-5,"IL",ShippingType.STANDARD
+25,null,ShippingType.NEXT_DAY
+100,"FL",null
