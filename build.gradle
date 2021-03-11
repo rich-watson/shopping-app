@@ -3,6 +3,7 @@ plugins {
     id "io.freefair.lombok" version "5.1.0"
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id "pmd"
+    id 'java-library'
 }
 
 repositories {
@@ -46,7 +47,10 @@ test {
     afterTest { desc, result ->
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
+
 }
+
+
 
 task packageDistribution(type: Zip) {
     dependsOn test
