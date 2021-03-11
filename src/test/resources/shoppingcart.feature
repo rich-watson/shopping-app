@@ -10,7 +10,7 @@ Feature: Shopping purchase with  total cost calculation
      Given The purchased state was "IL"
      And the cost was 20 dollars
      And the shipping type was selected as "next day"
-     Then the total cost is 46.20 dollars
+     Then the total cost amount is 46.20 dollars
 
 
 

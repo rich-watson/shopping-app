@@ -1,6 +1,7 @@
 package edu.depaul.se433;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import edu.depaul.se433.shoppingapp.ShippingType;
 import edu.depaul.se433.shoppingapp.TotalCostCalculator;
 import io.cucumber.java.en.And;
@@ -28,7 +29,7 @@ public class MyStepdefs {
 
   @And("The shipping type was {string}")
   public void theShippingTypeWas(String arg0) {
-    shipping = arg0;
+    shipping = arg0.toLowerCase();
   }
 
   @Then("the total cost is {int} dollars")
@@ -58,11 +59,12 @@ public class MyStepdefs {
 
   @And("the shipping type was selected as {string}")
   public void theShippingTypeWasSelectedAs(String arg0) {
-    shipping = arg0;
+    shipping = arg0.toLowerCase();
   }
 
-  @Then("the total cost is {double} dollars")
-  public void theTotalCostIsDollars(double expectedCost) {
+
+  @Then("the total cost amount is {double} dollars")
+  public void theTotalCostAmountIsDollars(double expectedCost) {
 
     ShippingType shippingType;
     if (shipping.equals("standard")) {
@@ -72,6 +74,7 @@ public class MyStepdefs {
     }
     assertEquals(expectedCost, TotalCostCalculator.calculate(cost, state, shippingType));
   }
+
 
 
   @Given("The item was purchased in the state of {string}")
@@ -86,7 +89,7 @@ public class MyStepdefs {
 
   @And("shipping type selected was {string}")
   public void shippingTypeSelectedWas(String arg0) {
-    shipping = arg0;
+    shipping = arg0.toLowerCase();
   }
 
   @Then("the total cost due is {int} dollars")
@@ -101,6 +104,8 @@ public class MyStepdefs {
     assertEquals(expectedCost, TotalCostCalculator.calculate(cost, state, shippingType));
 
   }
+
+
 }
 
 
