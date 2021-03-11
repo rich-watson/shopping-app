@@ -4,6 +4,7 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id "pmd"
     id 'java-library'
+    id 'jacoco'
 }
 
 repositories {
@@ -53,8 +54,22 @@ test {
     afterTest { desc, result ->
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
-    finalizedBy cukesTest
+    finalizedBy cukesTest, jacocoTestReport
 
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.8
+            }
+        }
+    }
 }
 
 
@@ -77,13 +92,16 @@ task packageDistribution(type: Zip) {
 }
 
 check {
+//    dependsOn {
+//        jacocoTestCoverageVerification
+//    }
     finalizedBy packageDistribution
 }
 
 pmd {
     consoleOutput = true
     toolVersion = "6.21.0"
-    rulePriority = 3
+    rulePriority = 2
     ignoreFailures = true
     ruleSets = [
             "category/java/errorprone.xml",
