@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Calculated a tax amount, given a purchase amount and a state value
  */
-public class TaxCalculator {
+public class TaxCalculatorUtil {
 
   private static Map<String, Double> taxRates = new HashMap<>();
 

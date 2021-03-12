@@ -17,7 +17,7 @@ public class TotalCostCalculator {
 
     double shippingCost = getShippingCost(shipping, initialCost);
     double costWithShipping = initialCost + shippingCost;
-    double tax = TaxCalculator.calculate(costWithShipping, state);
+    double tax = TaxCalculatorUtil.calculate(costWithShipping, state);
     double total = initialCost + tax + shippingCost;
     return  new Bill(initialCost,shippingCost,tax, total);
   }
@@ -25,7 +25,7 @@ public class TotalCostCalculator {
   public static double calculate(double initialCost, String state, ShippingType shipping) {
     double shippingCost = getShippingCost(shipping, initialCost);
     double costWithShipping = initialCost + shippingCost;
-    double tax = TaxCalculator.calculate(costWithShipping, state);
+    double tax = TaxCalculatorUtil.calculate(costWithShipping, state);
     return initialCost + tax + shippingCost;
   }
 

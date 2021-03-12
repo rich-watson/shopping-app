@@ -106,7 +106,8 @@ pmd {
     ruleSets = [
             "category/java/errorprone.xml",
             "category/java/bestpractices.xml",
-            "category/java/performance.xml"
+            "category/java/performance.xml",
+            "category/java/codestyle.xml"
     ]
 }
 

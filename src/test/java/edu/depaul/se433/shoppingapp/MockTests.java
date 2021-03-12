@@ -12,7 +12,7 @@ import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class mockTests {
+public class MockTests {
 
 
   @Test

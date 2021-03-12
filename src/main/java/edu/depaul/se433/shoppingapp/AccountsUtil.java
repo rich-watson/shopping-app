@@ -8,7 +8,7 @@ package edu.depaul.se433.shoppingapp;
 /**
  * The Accounts class is responsible for making sure user accounts are kept up to date.
  */
-public class Accounts {
+public class AccountsUtil {
 
   public static void recordPurchase(double cost, String name, String state) {
 
